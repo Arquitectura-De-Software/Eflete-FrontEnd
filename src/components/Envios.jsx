@@ -5,7 +5,8 @@ class Envios extends Component{
         super();
 
         this.state = {
-            envioId: 0
+            envioId: 0,
+            envioSeleccionado
         }
     }
 

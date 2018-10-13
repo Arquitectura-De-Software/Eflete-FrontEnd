@@ -20,8 +20,8 @@ export const ciudades =["Avellaneda",
 
 export const estados = ["INICIADO", "TOMADO", "CARGANDO", "ENPROCESO", "DESCARGANDO", "FINALIZADO"];
 
-export const NIGUNA = {
-    value: "NIGUNA",
+export const NINGUNA = {
+    value: "NINGUNA",
     display: "Ninguna"
 }
 export const REFRIGERADO = {
@@ -37,4 +37,4 @@ export const ULTRACONGELADO = {
     display: "Ultracongelado"
 }
 
-export const refrigeracion = [NIGUNA,REFRIGERADO,CONGELADO,ULTRACONGELADO];
+export const refrigeracion = [NINGUNA,REFRIGERADO,CONGELADO,ULTRACONGELADO];

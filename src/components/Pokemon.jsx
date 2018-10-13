@@ -14,13 +14,11 @@ class Pokemon extends Component{
     }
 
     onPokemonClick () {
-        // console.log(this.props.url)
         fetch(this.props.url)
             .then(results => {
                 return results.json()
             })
             .then(data => {
-                // console.log(data)
                 this.setState({
                     showValues: true,
                     height: data.height,
@@ -61,43 +59,6 @@ class Pokemon extends Component{
             </div>
 
         );
-        // console.log(this.props.url)
-        // console.log(this.state);
-        /**
-         *  Another way with nested ifelses:
-         */
-        /*
-                if(!this.state.showValues){
-                    return(
-                        <li
-                            onClick={this.onPokemonClick.bind(this)}
-                            className={"card"}>
-                            <div className={"row"}>
-                                name: {this.props.name}
-                            </div>
-                        </li>
-                    )
-                }
-                else if(this.state.showValues){
-                    return(
-                        <li className={"card"}>
-                            <div className={"row"}>
-                                <div className={"col-6"}>
-                                    <p>name: {this.props.name}</p>
-                                    <p>height: {this.state.height}</p>
-                                    <p>weight: {this.state.weight}</p>
-                                </div>
-                                <div className={"col-6"}>
-                                    <img src={this.state.imageURL}/>
-                                </div>
-                            </div>
-                        </li>
-                    )
-                }
-                else{
-                    return(<div>Loading.....</div>)
-                }
-        */
     }
 }
 

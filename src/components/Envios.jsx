@@ -1,19 +1,15 @@
 import React, {Component} from 'react';
-import ID from '../utils/auxs'
 
-class Pokemon extends Component{
+class Envios extends Component{
     constructor() {
         super();
 
         this.state = {
-            showValues: false,
-            imageURL: '',
-            height: 0,
-            weight: 0
+            envioId: 0
         }
     }
 
-    onPokemonClick () {
+    onEnvioClick () {
         fetch(this.props.url)
             .then(results => {
                 return results.json()
@@ -47,11 +43,11 @@ class Pokemon extends Component{
                         </div>
                     </li> :
                     <li
-                        onClick={this.onPokemonClick.bind(this)}
+                        onClick={this.onEnvioClick.bind(this)}
                         className={"card"}>
                         <div className={"row"}>
                             <div className={"col-6"}>
-                                <p>Pokemon Name: {this.props.name}</p>
+                                <p>Envios: {this.props.name}</p>
                             </div>
                         </div>
                     </li>
@@ -62,4 +58,4 @@ class Pokemon extends Component{
     }
 }
 
-export default Pokemon;
+export default Envios;

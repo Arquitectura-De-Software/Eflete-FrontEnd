@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {ciudades, refrigeracion} from "../constants/constants";
-import Pokemon from "./Pokemon";
+import Envios from "./Envios";
+import {ToastContainer, ToastStore} from 'react-toasts';
 import ID from "../utils/auxs";
 
 class App extends Component {
@@ -41,13 +42,19 @@ class App extends Component {
         fetch(`http://localhost:9090/envios/`, options)
             .then(result => {
                 if (result.ok) {
+                    {ToastStore.success("Envio creado exitosamente")}
                     return result.json()
+                }else{
+                    ToastStore.error("Error interno");
                 }
             })
             .then(data => {
                 this.setState({envioGenerado: data})
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+                ToastStore.error("Error de coneccion");
+                console.log(error)
+            })
 
     }
 
@@ -67,45 +74,50 @@ class App extends Component {
                 <div>
                     <h4>EFlete</h4>
                     <form>
-                        <label>Seleccione ciudad Origen </label>
+                        <label>Seleccione ciudad Origen </label> <br/>
                         <select
                             onChange={this.setStateProp.bind(this)('origen')}
                         >
                             {ciudades.map((cuidad, index) => {
                                 return <option key={index} value={cuidad}>{cuidad}</option>
                             })}
-                        </select>
+                        </select> <br/><br/>
 
-                        <label>Seleccione ciudad Destino </label>
+                        <label>Seleccione ciudad Destino </label> <br/>
                         <select
                             onChange={this.setStateProp.bind(this)('destino')}
                         >
                             {ciudades.map((cuidad, index) => {
                                 return <option key={index} value={cuidad}>{cuidad}</option>
                             })}
-                        </select>
+                        </select> <br/><br/>
 
-                        <label>Seleccione tipo de refrigeracion </label>
+                        <label>Seleccione tipo de refrigeracion </label> <br/>
                         <select
                             onChange={this.setStateProp.bind(this)('refrigeracion')}
                         >
                             {refrigeracion.map((ref, index) => {
                                 return <option key={index} value={ref.value}>{ref.display}</option>
                             })}
-                        </select>
+                        </select> <br/>
+
+                        <br/>
                         {/*HTML buttons has a bug, forces to reload the whole page, changing to div instead*/}
                         <button
                             onClick={this.onButtonClick.bind(this)}
                             className={"btn btn-success"}
-                        >search for type
+                        >Crear envio
                         </button>
+                        <ToastContainer store={ToastStore}/>
 
 
                     </form>
 
                 </div>
 
-                <Pokemon data={this.props.envioGenerado}/>
+                <br/> <br/>
+
+                <Envios data={this.props.envioGenerado}/>
 
             </div>
         )

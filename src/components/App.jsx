@@ -18,14 +18,8 @@ class App extends Component {
 
     }
 
-    // onSelectTypeChange(event) {
-    //     //console.log(event.target.value)
-    //     this.setState({: event.target.value})
-    // };
-
   onButtonClick = (event) => {
         event.preventDefault();
-        console.log("STATEEE", this.state)
         let options = {
             "Access-Control-Allow-Credentials": true,
             method: 'POST',
@@ -62,7 +56,6 @@ class App extends Component {
         var newState = {};
         const value = event.target.value;
         newState[propertyName] = value;
-        console.log("object set", newState);
         this.setState(newState);
     }
 

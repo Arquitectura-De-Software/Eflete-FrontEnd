@@ -26,11 +26,10 @@ class Envios extends Component {
                     {ToastStore.success("Envio Encontrado Exitosamente!")}
                     return result.json()
                 }else{
-                    ToastStore.error("Error interno");
+                    ToastStore.error("EL envio con id " + this.state.idEnvio + " no existe!");
                 }
             })
             .then(data => {
-                console.log("data envio", data);
                 this.setState({envioSeleccionado: data})
             })
             .catch(error => {
@@ -43,14 +42,22 @@ class Envios extends Component {
         return (
             <div>
                 <h4>Envios</h4>
-                <form onSubmit={this.handleSubmit.bind(this)}>
+                <form>
                     <label>Seleccione Envio por ID:
-                        <input type="text" pattern="[0-9]*" value={this.state.idEnvio} onChange={this.handleChange.bind(this)} />
+                        <input
+                            type="text"
+                            value={this.state.idEnvio}
+                            onChange={this.handleChange.bind(this)}
+                            onFocus = {() => this.setState({idEnvio: ""})}
+                        />
                     </label> <br/>
-                    <input type="submit" value="Submit" />
+                    <button
+                        onClick={this.handleSubmit.bind(this)}
+                        className={"btn btn-success"}
+                    >Crear envio
+                    </button>
                 </form>
 
-                {console.log("ENVIO SELECCIONADO", this.state.envioSeleccionado)}
                 {this.state.envioSeleccionado !== undefined &&
 
                 <li className={"card"}>
@@ -66,8 +73,8 @@ class Envios extends Component {
                                 <p>Ubicación: {this.state.envioSeleccionado.estadoActual.ubicacion}</p>
                             </div>
                             <p>Histórico de Estados: </p>
-                            {this.state.envioSeleccionado.estadoEnvios.map(estado =>
-                                <div className={"col-6"}>
+                            {this.state.envioSeleccionado.estadoEnvios.map((estado, index)=>
+                                <div className={"col-6"} key={index}>
                                     <p><li>Estado: {estado.codigoEstadoEnvio}</li></p>
                                     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Ubicación: {estado.ubicacion}</p>
                                 </div>

@@ -42,13 +42,13 @@ class App extends Component {
         fetch(`http://localhost:9090/envios/`, options)
             .then(result => {
                 if (result.ok) {
-                    {ToastStore.success("Envio creado exitosamente")}
                     return result.json()
                 }else{
                     ToastStore.error("Error interno");
                 }
             })
             .then(data => {
+                {ToastStore.success(`Envio creado exitosamente con ID: ${data.id}!`)}
                 this.setState({envioGenerado: data})
             })
             .catch(error => {

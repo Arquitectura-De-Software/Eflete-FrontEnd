@@ -39,15 +39,13 @@ class ModificarEnvios extends Component {
         fetch(`http://localhost:9090//estadoenvios/${this.state.idEnvio}`, options)
             .then(result => {
                 if (result.ok) {
+                    ToastStore.success(`Envio con ID ${data.id} modificado exitosamente!`);
                     return result.json()
                 } else {
-                    ToastStore.error("Error interno");
+                    ToastStore.error("El envio con id " + this.state.idEnvio + " no existe!");
                 }
             })
             .then(data => {
-                {
-                    ToastStore.success(`Envio con ID ${data.id} modificado exitosamente!`)
-                }
                 this.setState({envioGenerado: data})
             })
             .catch(error => {

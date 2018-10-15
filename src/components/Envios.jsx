@@ -41,7 +41,7 @@ class Envios extends Component {
     render() {
         return (
             <div>
-                <h4>Envios</h4>
+                <h4>Consultar Envios</h4>
                 <form>
                     <label>Seleccione Envio por ID:
                         <input
@@ -54,7 +54,7 @@ class Envios extends Component {
                     <button
                         onClick={this.handleSubmit.bind(this)}
                         className={"btn btn-success"}
-                    >Crear envio
+                    >Consultar Envío
                     </button>
                 </form>
 

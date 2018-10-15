@@ -3,6 +3,7 @@ import {ciudades, refrigeracion} from "../constants/constants";
 import Envios from "./Envios";
 import {ToastContainer, ToastStore} from 'react-toasts';
 import ID from "../utils/auxs";
+import ModificarEnvios from "./ModificarEnvios";
 
 class App extends Component {
     constructor() {
@@ -42,7 +43,7 @@ class App extends Component {
                 }
             })
             .then(data => {
-                {ToastStore.success(`Envio creado exitosamente con ID: ${data.id}!`)}
+                {ToastStore.success(`Envio creado exitosamente con ID ${data.id}!`)}
                 this.setState({envioGenerado: data})
             })
             .catch(error => {
@@ -66,6 +67,7 @@ class App extends Component {
             >
                 <div>
                     <h4>EFlete</h4>
+                    <h4>Crear Nuevo Envío</h4>
                     <form>
                         <label>Seleccione ciudad Origen </label> <br/>
                         <select
@@ -109,7 +111,8 @@ class App extends Component {
                 </div>
 
                 <br/> <br/>
-
+                <ModificarEnvios/>
+                <br/> <br/>
                 <Envios data={this.props.envioGenerado}/>
 
             </div>

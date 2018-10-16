@@ -1,6 +1,7 @@
-#### react-boilerplate for the AKASKILLS Course
-- this is a boilerplate fpr AKASKILLS react-redux video hold by janpauldahlke
-- this provides a simple boilerplate that allows you to take your first steps in the react-redux world
+#### Eflete Front-End
 
-- to start this repo blank do ```git clone https://github.com/janpauldahlke/react-boilerplate.git```
-- have fun learning and coding
+To run the proyect, run the commands:
+
+```bash
+  $ npm install
+  $ npm run start

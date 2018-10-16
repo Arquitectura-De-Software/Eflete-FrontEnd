@@ -1,17 +1,17 @@
 {
-  "name": "react-redux-boilerplate",
+  "name": "Eflete-FrontEnd",
   "version": "1.0.0",
-  "description": "react-simple-boilerplate for akaskills.com",
+  "description": "Eflete FrontEnd",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@github.com:janpauldahlke/react-boilerplate.git"
+    "url": "git@github.com:Arquitectura-De-Software/front-end.git"
   },
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "build": "webpack"
   },
-  "author": "jdahlke",
+  "author": "Damian Lattenero & Juan Manuel Vallejos",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.2.1",

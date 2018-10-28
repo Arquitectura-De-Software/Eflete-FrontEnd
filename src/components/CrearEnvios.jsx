@@ -1,23 +1,17 @@
 import React, {Component} from 'react';
-import {ciudades, estados} from "../constants/constants";
-import {ToastContainer, ToastStore} from 'react-toasts';
+import {ToastContainer, ToastStore} from "react-toasts";
+import {ciudades, refrigeracion} from "../constants/constants";
 
-class ModificarEnvios extends Component {
+class CrearEnvios extends Component {
     constructor() {
         super();
 
         this.state = {
-            idEnvio: 0,
-            codigoEstadoEnvio: "",
-            ubicacion: ""
-        }
-
-    }
-
-    handleChange = event => {
-        const re = /^[0-9\b]+$/;
-        if (event.target.value == '' || re.test(event.target.value)) {
-            this.setState({idEnvio: parseInt(event.target.value)});
+            origen: ciudades[0],
+            destino: ciudades[0],
+            refrigeracion: refrigeracion[0].value,
+            estadoActual: {},
+            envioGenerado: {}
         }
     }
 
@@ -31,20 +25,21 @@ class ModificarEnvios extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                codigoEstadoEnvio: this.state.codigoEstadoEnvio,
-                ubicacion: this.state.ubicacion
+                origen: this.state.origen,
+                destino: this.state.destino,
+                refrigeracion: this.state.refrigeracion
             })
         };
-        fetch(`http://localhost:9090/estadoenvios/${this.state.idEnvio}`, options)
+        fetch(`http://localhost:9090/envios/`, options)
             .then(result => {
                 if (result.ok) {
-                    ToastStore.success(`Envio con ID ${this.state.idEnvio} modificado exitosamente!`);
-                    return result.json();
-                } else {
-                    ToastStore.error("El envio con id " + this.state.idEnvio + " no existe!");
+                    return result.json()
+                }else{
+                    ToastStore.error("Error interno");
                 }
             })
             .then(data => {
+                {ToastStore.success(`Envio creado exitosamente con ID ${data.id}!`)}
                 this.setState({envioGenerado: data})
             })
             .catch(error => {
@@ -63,49 +58,51 @@ class ModificarEnvios extends Component {
 
     render() {
         return (
-
             <div>
-                <h4>Modificar Envíos</h4>
+                <h4>Crear Nuevo Envío</h4>
                 <form>
-                    <label>Seleccione Envio a modificar por ID:
-                        <input
-                            type="text"
-                            value={this.state.idEnvio}
-                            onChange={this.handleChange.bind(this)}
-                            onFocus = {() => this.setState({idEnvio: ""})}
-                        />
-                    </label> <br/>
-                    <br/>
-
-                    <label>Seleccione Ubicación</label> <br/>
+                    <label>Seleccione ciudad Origen </label> <br/>
                     <select
-                        onChange={this.setStateProp.bind(this)('ubicacion')}
+                        onChange={this.setStateProp.bind(this)('origen')}
                     >
                         {ciudades.map((cuidad, index) => {
                             return <option key={index} value={cuidad}>{cuidad}</option>
                         })}
                     </select> <br/><br/>
 
-                    <label>Seleccione Estado</label> <br/>
+                    <label>Seleccione ciudad Destino </label> <br/>
                     <select
-                        onChange={this.setStateProp.bind(this)('codigoEstadoEnvio')}
+                        onChange={this.setStateProp.bind(this)('destino')}
                     >
-                        {estados.map((ref, index) => {
+                        {ciudades.map((cuidad, index) => {
+                            return <option key={index} value={cuidad}>{cuidad}</option>
+                        })}
+                    </select> <br/><br/>
+
+                    <label>Seleccione tipo de refrigeracion </label> <br/>
+                    <select
+                        onChange={this.setStateProp.bind(this)('refrigeracion')}
+                    >
+                        {refrigeracion.map((ref, index) => {
                             return <option key={index} value={ref.value}>{ref.display}</option>
                         })}
                     </select> <br/>
 
                     <br/>
+                    {/*HTML buttons has a bug, forces to reload the whole page, changing to div instead*/}
                     <button
                         onClick={this.onButtonClick.bind(this)}
                         className={"btn btn-success"}
-                    >Modificar Estado
+                    >Crear envio
                     </button>
+                    <ToastContainer store={ToastStore}/>
+
+
                 </form>
             </div>
 
-        )
+        );
     }
 }
 
-export default ModificarEnvios;
+export default CrearEnvios;

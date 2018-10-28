@@ -30,6 +30,7 @@ class Envios extends Component {
                 }
             })
             .then(data => {
+                console.log("envio seleccionado", data);
                 this.setState({envioSeleccionado: data})
             })
             .catch(error => {

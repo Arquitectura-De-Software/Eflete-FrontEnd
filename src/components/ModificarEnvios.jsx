@@ -102,6 +102,7 @@ class ModificarEnvios extends Component {
                     >Modificar Estado
                     </button>
                 </form>
+                <ToastContainer store={ToastStore}/>
             </div>
 
         )

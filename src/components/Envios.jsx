@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ToastStore} from "react-toasts";
+import {ToastContainer, ToastStore} from "react-toasts";
 
 class Envios extends Component {
     constructor() {
@@ -88,7 +88,7 @@ class Envios extends Component {
                     </div>
                 </li>
                 }
-
+                <ToastContainer store={ToastStore}/>
             </div>
 
         );

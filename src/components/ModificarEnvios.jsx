@@ -8,8 +8,8 @@ class ModificarEnvios extends Component {
 
         this.state = {
             idEnvio: 0,
-            codigoEstadoEnvio: "",
-            ubicacion: ""
+            codigoEstadoEnvio: estados[0].value,
+            ubicacion: ciudades[0],
         }
 
     }

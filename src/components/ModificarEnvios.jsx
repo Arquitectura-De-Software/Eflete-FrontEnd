@@ -8,8 +8,8 @@ class ModificarEnvios extends Component {
 
         this.state = {
             idEnvio: 0,
-            codigoEstadoEnvio: "",
-            ubicacion: ""
+            codigoEstadoEnvio: estados[0].value,
+            ubicacion: ciudades[0],
         }
 
     }
@@ -24,6 +24,7 @@ class ModificarEnvios extends Component {
     onButtonClick = (event) => {
         event.preventDefault();
         let options = {
+            "Access-Control-Allow-Credentials": true,
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

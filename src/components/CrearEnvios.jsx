@@ -19,6 +19,7 @@ class CrearEnvios extends Component {
     onButtonClick = (event) => {
         event.preventDefault();
         let options = {
+            "Access-Control-Allow-Credentials": true,
             method: 'POST',
             headers: {
                 'Accept': 'application/json',

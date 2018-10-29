@@ -13,7 +13,7 @@
   "scripts": {
     "start": "npm run build && NODE_ENV=production node ./src/index.js",
     "heroku-postbuild": "npm run build",
-    "build": "webpack --config webpack.prod.config.js",
+    "build": "webpack --config webpack.config.js",
     "dev": "next"
   },
   "author": "Damian Lattenero & Juan Manuel Vallejos",

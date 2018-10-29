@@ -8,7 +8,7 @@ class ModificarEnvios extends Component {
 
         this.state = {
             idEnvio: 0,
-            CodigoEstadoEnvio: "",
+            codigoEstadoEnvio: "",
             ubicacion: ""
         }
 
@@ -17,13 +17,12 @@ class ModificarEnvios extends Component {
     handleChange = event => {
         const re = /^[0-9\b]+$/;
         if (event.target.value == '' || re.test(event.target.value)) {
-            this.setState({idEnvio: event.target.value});
+            this.setState({idEnvio: parseInt(event.target.value)});
         }
     }
 
     onButtonClick = (event) => {
         event.preventDefault();
-        console.log("state actual", this.state)
         let options = {
             "Access-Control-Allow-Credentials": true,
             method: 'POST',
@@ -32,15 +31,15 @@ class ModificarEnvios extends Component {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                CodigoEstadoEnvio: this.state.CodigoEstadoEnvio,
+                codigoEstadoEnvio: this.state.codigoEstadoEnvio,
                 ubicacion: this.state.ubicacion
             })
         };
-        fetch(`http://localhost:9090//estadoenvios/${this.state.idEnvio}`, options)
+        fetch(`http://localhost:9090/estadoenvios/${this.state.idEnvio}`, options)
             .then(result => {
                 if (result.ok) {
-                    ToastStore.success(`Envio con ID ${data.id} modificado exitosamente!`);
-                    return result.json()
+                    ToastStore.success(`Envio con ID ${this.state.idEnvio} modificado exitosamente!`);
+                    return result.json();
                 } else {
                     ToastStore.error("El envio con id " + this.state.idEnvio + " no existe!");
                 }
@@ -89,10 +88,10 @@ class ModificarEnvios extends Component {
 
                     <label>Seleccione Estado</label> <br/>
                     <select
-                        onChange={this.setStateProp.bind(this)('CodigoEstadoEnvio')}
+                        onChange={this.setStateProp.bind(this)('codigoEstadoEnvio')}
                     >
                         {estados.map((ref, index) => {
-                            return <option key={index} value={ref}>{ref}</option>
+                            return <option key={index} value={ref.value}>{ref.display}</option>
                         })}
                     </select> <br/>
 
@@ -103,6 +102,7 @@ class ModificarEnvios extends Component {
                     >Modificar Estado
                     </button>
                 </form>
+                <ToastContainer store={ToastStore}/>
             </div>
 
         )

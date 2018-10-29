@@ -1,35 +1,48 @@
-'use strict';
+ var http = require('http');
+ var fs = require('fs');
+ var path = require('path');
 
-const Hapi=require('hapi');
+ http.createServer(function (request, response) {
 
-// Create a server with a host and port
-const server=Hapi.server({
-    host:'https://fast-sea-42862.herokuapp.com/',
-    port: process.env.PORT || 3000 
-});
+    console.log('request starting for ');
+    console.log(request);
 
-// Add the route
-server.route({
-    method:'GET',
-    path:'/hello',
-    handler:function(request,h) {
+    var filePath = '.' + request.url;
+    if (filePath == './')
+        filePath = './index.html';
 
-        return'hello world';
-    }
-});
-
-// Start the server
-async function start() {
-
-    try {
-        await server.start();
-    }
-    catch (err) {
-        console.log(err);
-        process.exit(1);
+    console.log(filePath);
+    var extname = path.extname(filePath);
+    var contentType = 'text/html';
+    switch (extname) {
+        case '.js':
+            contentType = 'text/javascript';
+            break;
+        case '.css':
+            contentType = 'text/css';
+            break;
     }
 
-    console.log('Server running at:', server.info.uri);
-};
+    path.exists(filePath, function(exists) {
 
-start();
+        if (exists) {
+            fs.readFile(filePath, function(error, content) {
+                if (error) {
+                    response.writeHead(500);
+                    response.end();
+                }
+                else {
+                    response.writeHead(200, { 'Content-Type': contentType });
+                    response.end(content, 'utf-8');
+                }
+            });
+        }
+        else {
+            response.writeHead(404);
+            response.end();
+        }
+    });
+
+ }).listen(process.env.PORT || 5000);
+
+ console.log('Server running.....');

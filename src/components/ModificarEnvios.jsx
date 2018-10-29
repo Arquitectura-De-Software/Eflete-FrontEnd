@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {ciudades, estados} from "../constants/constants";
+import {ciudades, estados, urlBackend} from "../constants/constants";
 import {ToastContainer, ToastStore} from 'react-toasts';
 
 class ModificarEnvios extends Component {
@@ -24,7 +24,6 @@ class ModificarEnvios extends Component {
     onButtonClick = (event) => {
         event.preventDefault();
         let options = {
-            "Access-Control-Allow-Credentials": true,
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -35,7 +34,7 @@ class ModificarEnvios extends Component {
                 ubicacion: this.state.ubicacion
             })
         };
-        fetch(`http://localhost:9090/estadoenvios/${this.state.idEnvio}`, options)
+        fetch(`${urlBackend}/estadoenvios/${this.state.idEnvio}`, options)
             .then(result => {
                 if (result.ok) {
                     ToastStore.success(`Envio con ID ${this.state.idEnvio} modificado exitosamente!`);

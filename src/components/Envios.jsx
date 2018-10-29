@@ -30,7 +30,6 @@ class Envios extends Component {
                 }
             })
             .then(data => {
-                console.log("envio seleccionado", data);
                 this.setState({envioSeleccionado: data})
             })
             .catch(error => {
@@ -82,9 +81,6 @@ class Envios extends Component {
                             )
                             }
                         </div>
-                        {/*<div className={"col-6"}>*/}
-                        {/*<img src={this.state.imageURL}/>*/}
-                        {/*</div>*/}
                     </div>
                 </li>
                 }

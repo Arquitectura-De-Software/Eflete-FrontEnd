@@ -1,9 +1,35 @@
-var express = require('express');
-var app = express();
+'use strict';
 
-const host = '0.0.0.0';
-const port = process.env.PORT || 3000;
+const Hapi=require('hapi');
 
-app.listen(port, host, function() {
-  console.log("Server started.......");
+// Create a server with a host and port
+const server=Hapi.server({
+    host:'https://fast-sea-42862.herokuapp.com/',
+    port: process.env.PORT || 3000 
 });
+
+// Add the route
+server.route({
+    method:'GET',
+    path:'/hello',
+    handler:function(request,h) {
+
+        return'hello world';
+    }
+});
+
+// Start the server
+async function start() {
+
+    try {
+        await server.start();
+    }
+    catch (err) {
+        console.log(err);
+        process.exit(1);
+    }
+
+    console.log('Server running at:', server.info.uri);
+};
+
+start();

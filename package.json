@@ -11,7 +11,7 @@
     "url": "git@github.com:Arquitectura-De-Software/front-end.git"
   },
   "scripts": {
-    "start": "npm run build && NODE_ENV=production node server.js",
+    "start": "npm run build && NODE_ENV=production node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
     "heroku-postbuild": "npm run build",
     "build": "webpack --config webpack.prod.config.js",
     "dev": "next"

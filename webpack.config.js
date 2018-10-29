@@ -1,3 +1,5 @@
+const webpack = require('webpack');
+
 module.exports = {
   devtool: 'inline-source-map',
   entry: [
@@ -27,5 +29,10 @@ module.exports = {
   devServer: {
     historyApiFallback: true,
     contentBase: './'
-  }
+  },
+  plugins: [
+    new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  ]
 };

@@ -1,4 +1,6 @@
 
+export const urlBackend = "https://eflete-backend.herokuapp.com";
+
 export const ciudades =["Avellaneda",
     "Almirante Brown",
     "Berazategui",

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {ToastContainer, ToastStore} from "react-toasts";
 import {ciudades, refrigeracion} from "../constants/constants";
+import {urlBackend} from "../constants/constants";
 
 class CrearEnvios extends Component {
     constructor() {
@@ -18,7 +19,6 @@ class CrearEnvios extends Component {
     onButtonClick = (event) => {
         event.preventDefault();
         let options = {
-            "Access-Control-Allow-Credentials": true,
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -30,7 +30,7 @@ class CrearEnvios extends Component {
                 refrigeracion: this.state.refrigeracion
             })
         };
-        fetch(`http://localhost:9090/envios/`, options)
+        fetch(`${urlBackend}/envios/`, options)
             .then(result => {
                 if (result.ok) {
                     return result.json()

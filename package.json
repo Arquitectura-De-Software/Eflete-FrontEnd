@@ -13,7 +13,8 @@
   },
   "author": "Damian Lattenero & Juan Manuel Vallejos",
   "license": "ISC",
-  "devDependencies": {
+  "devDependencies": {},
+  "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
     "babel-core": "^6.26.3",
@@ -23,9 +24,7 @@
     "css-loader": "^0.28.11",
     "node-sass": "^4.9.4",
     "sass-loader": "^6.0.3",
-    "style-loader": "^0.16.1"
-  },
-  "dependencies": {
+    "style-loader": "^0.16.1",
     "babel-loader": "^7.1.5",
     "babel-preset-stage-1": "^6.1.18",
     "lodash": "^4.17.11",

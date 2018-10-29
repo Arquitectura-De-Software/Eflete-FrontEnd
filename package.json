@@ -9,10 +9,10 @@
   },
   "scripts": {
     "prestart": "next build",
-    "start": "npm run build && NODE_ENV=production node server.js",
-    "heroku-postbuild": "webpack -p",
+    "start": "next start -p 5000",
+    "heroku-postbuild": "npm run build",
     "build": "webpack --config webpack.prod.config.js",
-    "dev": "webpack-dev-server --hot --inline"
+    "dev": "next"
   },
   "author": "Damian Lattenero & Juan Manuel Vallejos",
   "license": "ISC",

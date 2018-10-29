@@ -1,5 +1,6 @@
 const config = require('./webpack.config.js');
 const webpack = require('webpack');
+const port = (process.env.PORT || 8010);
 
 config.plugins.push(
   new webpack.DefinePlugin({

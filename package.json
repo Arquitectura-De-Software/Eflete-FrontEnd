@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node ./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "heroku-postbuild": "webpack -p",
     "build": "webpack"
   },
   "author": "Damian Lattenero & Juan Manuel Vallejos",

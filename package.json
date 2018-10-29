@@ -1,7 +1,7 @@
 {
   "name": "Eflete-FrontEnd",
   "version": "1.0.0",
-  "engines":{
+  "engines": {
     "node": "8.12.0"
   },
   "description": "Eflete FrontEnd",
@@ -27,6 +27,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.1.18",
     "babel-preset-react": "^6.1.18",
+    "babel-preset-stage-0": "^6.24.1",
     "babel-preset-stage-1": "^6.1.18",
     "cool-ascii-faces": "^1.3.4",
     "css-loader": "^0.28.11",
@@ -51,7 +52,12 @@
     "webpack-dev-server": "^2.11.3",
     "webpack-hot-middleware": "^2.19.1"
   },
-  "babel":{
-    "presets":["es2015", "react"]
+  "babel": {
+    "presets": [
+      "es2015",
+      "react",
+      "stage-0",
+      "stage-1"
+    ]
   }
 }

@@ -1,5 +1,6 @@
 roadmap
 node_modules/**
+!node_modules/webpack-dev-server/bin/webpack-dev-server.js
 .vscode/**
 bundle.js
 .idea/

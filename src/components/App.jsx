@@ -8,9 +8,11 @@ class App extends Component {
             <div
                 className={"container app-container"}
             >
-                <h1>Bienvenido a EFlete!</h1>
                 <Header />
+                <br/>
+                <div class="container">
                 <Main />
+                </div>
             </div>
         )
     }

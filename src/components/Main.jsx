@@ -3,7 +3,7 @@ import {Route, Switch} from 'react-router-dom'
 import CrearEnvios from "./CrearEnvios";
 import Envios from "./Envios";
 import ModificarEnvios from "./ModificarEnvios";
-
+import HomePage from "./HomePage";
 
 class Main extends Component {
     constructor() {
@@ -16,6 +16,8 @@ class Main extends Component {
                 <Switch>
                     {/*<Route exact path='/' component={Home}/>*/}
                     {/* both /roster and /roster/:number begin with /roster */}
+                    <Route exact path='/' component={HomePage} />
+                    <Route exact path='/homepage' component={HomePage} />
                     <Route exact path='/crearenvio' component={CrearEnvios}/>
                     <Route exact path='/envios' component={Envios}/>
                     <Route exact path='/modificarenvio' component={ModificarEnvios}/>

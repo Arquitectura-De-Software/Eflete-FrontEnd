@@ -43,7 +43,7 @@ class CrearEnvios extends Component {
                 this.setState({envioGenerado: data})
             })
             .catch(error => {
-                ToastStore.error("Error de coneccion");
+                ToastStore.error("Error de conexion");
                 console.log(error)
             })
 

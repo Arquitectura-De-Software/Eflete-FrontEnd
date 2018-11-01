@@ -27,8 +27,6 @@ module.exports = {
     extensions: ['.js', '.jsx']
   },
   devServer: {
-    inline:true,
-    port: 5000,
     historyApiFallback: true,
     contentBase: './'
   },

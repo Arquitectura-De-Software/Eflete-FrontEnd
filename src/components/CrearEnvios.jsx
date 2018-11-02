@@ -72,7 +72,6 @@ class CrearEnvios extends Component {
                                         return <option key={index} value={cuidad}>{cuidad}</option>
                                     })}
                                 </select> 
-                                <span class="glyphicon glyphicon-arrow-right"> </span>
                             </div>
                             <div class="col col-lg-4">
                                 <label>Seleccione ciudad Destino </label> <br/>

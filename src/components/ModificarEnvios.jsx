@@ -62,48 +62,61 @@ class ModificarEnvios extends Component {
 
     render() {
         return (
-
             <div>
-                <h4>Modificar Envíos</h4>
-                <form>
-                    <label>Seleccione Envio a modificar por ID:
-                        <input
-                            type="text"
-                            value={this.state.idEnvio}
-                            onChange={this.handleChange.bind(this)}
-                            onFocus = {() => this.setState({idEnvio: ""})}
-                        />
-                    </label> <br/>
-                    <br/>
-
-                    <label>Seleccione Ubicación</label> <br/>
-                    <select
-                        onChange={this.setStateProp.bind(this)('ubicacion')}
-                    >
-                        {ciudades.map((cuidad, index) => {
-                            return <option key={index} value={cuidad}>{cuidad}</option>
-                        })}
-                    </select> <br/><br/>
-
-                    <label>Seleccione Estado</label> <br/>
-                    <select
-                        onChange={this.setStateProp.bind(this)('codigoEstadoEnvio')}
-                    >
-                        {estados.map((ref, index) => {
-                            return <option key={index} value={ref.value}>{ref.display}</option>
-                        })}
-                    </select> <br/>
-
-                    <br/>
-                    <button
-                        onClick={this.onButtonClick.bind(this)}
-                        className={"btn btn-success"}
-                    >Modificar Estado
-                    </button>
-                </form>
-                <ToastContainer store={ToastStore}/>
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Modificar Envíos</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <label>Seleccione Envio a modificar por ID:
+                                    </label>
+                                </div>
+                                <div class="col col-lg-4">
+                                    <input type="text" value={this.state.idEnvio}
+                                        onChange={this.handleChange.bind(this)}
+                                        onFocus = {() => this.setState({idEnvio: ""})} />
+                                </div>
+                            </div>
+                            <br />
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <label>Seleccione Ubicación</label>    
+                                </div>
+                                <div class="col col-lg-4">
+                                    <select onChange={this.setStateProp.bind(this)('ubicacion')}>
+                                        {ciudades.map((cuidad, index) => {
+                                            return <option key={index} value={cuidad}>{cuidad}</option>
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <label>Seleccione Estado</label>    
+                                </div>
+                                <div class="col col-lg-4">
+                                    <select onChange={this.setStateProp.bind(this)('codigoEstadoEnvio')}>
+                                        {estados.map((ref, index) => {
+                                            return <option key={index} value={ref.value}>{ref.display}</option>
+                                        })}
+                                    </select>
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <button onClick={this.onButtonClick.bind(this)} className={"btn btn-success"}>Modificar Estado </button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <ToastContainer store={ToastStore}/>
+                </div>
             </div>
-
         )
     }
 }

@@ -42,23 +42,35 @@ class Envios extends Component {
     render() {
         return (
             <div>
-                <h4>Consultar Envios</h4>
-                <form>
-                    <label>Seleccione Envio por ID:
-                        <input
-                            type="text"
-                            value={this.state.idEnvio}
-                            onChange={this.handleChange.bind(this)}
-                            onFocus = {() => this.setState({idEnvio: ""})}
-                        />
-                    </label> <br/>
-                    <button
-                        onClick={this.handleSubmit.bind(this)}
-                        className={"btn btn-success"}
-                    >Consultar Envío
-                    </button>
-                </form>
-
+                <div class="card">
+                    <div class="card-header">
+                        <h5>Consultar Envios</h5>
+                    </div>
+                    <div class="card-body">
+                        <form>
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <label>Seleccione Envio por ID: </label>
+                                </div>
+                                <div class="col col-lg-4">
+                                    <input
+                                        type="text"
+                                        value={this.state.idEnvio}
+                                        onChange={this.handleChange.bind(this)}
+                                        onFocus = {() => this.setState({idEnvio: ""})}
+                                    />
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="row">
+                                <div class="col col-lg-4">
+                                    <button onClick={this.handleSubmit.bind(this)} className={"btn btn-success"} >Consultar Envío </button>
+                                </div>
+                            </div> 
+                        </form>
+                    </div>
+                </div>
+                <br/>
                 {this.state.envioSeleccionado !== undefined &&
 
                 <li className={"card"}>
@@ -87,7 +99,6 @@ class Envios extends Component {
                 }
                 <ToastContainer store={ToastStore}/>
             </div>
-
         );
     }
 }

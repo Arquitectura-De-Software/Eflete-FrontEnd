@@ -58,47 +58,53 @@ class CrearEnvios extends Component {
 
     render() {
         return (
-            <div>
-                <h4>Crear Nuevo Envío</h4>
-                <form>
-                    <label>Seleccione ciudad Origen </label> <br/>
-                    <select
-                        onChange={this.setStateProp.bind(this)('origen')}
-                    >
-                        {ciudades.map((cuidad, index) => {
-                            return <option key={index} value={cuidad}>{cuidad}</option>
-                        })}
-                    </select> <br/><br/>
-
-                    <label>Seleccione ciudad Destino </label> <br/>
-                    <select
-                        onChange={this.setStateProp.bind(this)('destino')}
-                    >
-                        {ciudades.map((cuidad, index) => {
-                            return <option key={index} value={cuidad}>{cuidad}</option>
-                        })}
-                    </select> <br/><br/>
-
-                    <label>Seleccione tipo de refrigeracion </label> <br/>
-                    <select
-                        onChange={this.setStateProp.bind(this)('refrigeracion')}
-                    >
-                        {refrigeracion.map((ref, index) => {
-                            return <option key={index} value={ref.value}>{ref.display}</option>
-                        })}
-                    </select> <br/>
-
-                    <br/>
-                    {/*HTML buttons has a bug, forces to reload the whole page, changing to div instead*/}
-                    <button
-                        onClick={this.onButtonClick.bind(this)}
-                        className={"btn btn-success"}
-                    >Crear envio
-                    </button>
-                    <ToastContainer store={ToastStore}/>
-
-
-                </form>
+            <div class="card">
+                <div class="card-header">
+                    <h5>Crear Nuevo Envío</h5>
+                </div>
+                <div class="card-body">
+                    <form>
+                        <div class="row">
+                            <div class="col col-lg-4">
+                                <label>Seleccione ciudad Origen </label> <br/>
+                                <select onChange={this.setStateProp.bind(this)('origen')} >
+                                    {ciudades.map((cuidad, index) => {
+                                        return <option key={index} value={cuidad}>{cuidad}</option>
+                                    })}
+                                </select> 
+                                <span class="glyphicon glyphicon-arrow-right"> </span>
+                            </div>
+                            <div class="col col-lg-4">
+                                <label>Seleccione ciudad Destino </label> <br/>
+                                <select onChange={this.setStateProp.bind(this)('destino')} >
+                                    {ciudades.map((cuidad, index) => {
+                                        return <option key={index} value={cuidad}>{cuidad}</option>
+                                    })}
+                                </select>
+                            </div>
+                            <div class="col col-lg-4">
+                                <label>Seleccione tipo de refrigeracion </label> <br/>
+                                <select onChange={this.setStateProp.bind(this)('refrigeracion')} >
+                                    {refrigeracion.map((ref, index) => {
+                                        return <option key={index} value={ref.value}>{ref.display}</option>
+                                    })}
+                                </select>
+                            </div>
+                        </div>
+                        <br />
+                        <div class="row">
+                            <div class="col col-lg-12">
+                                {/*HTML buttons has a bug, forces to reload the whole page, changing to div instead*/}
+                                <button
+                                    onClick={this.onButtonClick.bind(this)}
+                                    className={"btn btn-success"}
+                                >Crear envio
+                                </button>
+                                <ToastContainer store={ToastStore}/>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
 
         );

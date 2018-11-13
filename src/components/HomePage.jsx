@@ -10,7 +10,7 @@ class HomePage extends Component {
         return (
 
 			<h1>Bienvenido a EFlete!</h1>
-		)
+		);
 	}
 }
 
